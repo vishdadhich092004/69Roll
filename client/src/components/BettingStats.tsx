@@ -3,10 +3,10 @@ import { RefreshCw } from "lucide-react";
 
 interface BettingStatsProps {
   multiplier: string;
-  rollOver: string;
+  rollOver: number;
   winChance: string;
   onMultiplierChange: (value: string) => void;
-  onRollOverChange: (value: string) => void;
+  onRollOverChange: (value: number) => void;
   onWinChanceChange: (value: string) => void;
 }
 
@@ -40,8 +40,8 @@ export default function BettingStats({
         <div className="relative">
           <Input
             type="text"
-            value={rollOver}
-            onChange={(e) => onRollOverChange(e.target.value)}
+            value={rollOver.toFixed(2)}
+            onChange={(e) => onRollOverChange(Number(e.target.value))}
             className="bg-[#1a2533] border-0 h-12 rounded-md"
           />
           <div className="absolute right-3 top-1/2 transform -translate-y-1/2">

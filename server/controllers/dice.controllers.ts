@@ -7,6 +7,10 @@ let playerBalance = 1000;
 export const rollDice = (req: Request, res: Response): any => {
   try {
     const { clientSeed, nonce, betAmount } = req.body as RollRequest;
+    // Validate required fields
+    if (!clientSeed || !nonce) {
+      return res.status(400).json({ message: "Missing required fields" });
+    }
 
     // Validate bet amount
     if (!betAmount || betAmount <= 0) {
@@ -23,8 +27,8 @@ export const rollDice = (req: Request, res: Response): any => {
       return res.status(400).json({ message: "Invalid dice roll" });
     }
 
-    // Win if roll is 4, 5, or 6
-    const won = result.roll >= 4;
+    // Win if roll is 4, 5, or 6 (making the condition more explicit)
+    const won = [4, 5, 6].includes(result.roll);
     const winAmount = won ? betAmount * 2 : 0;
 
     // Update balance: subtract bet and add winnings (if any)
