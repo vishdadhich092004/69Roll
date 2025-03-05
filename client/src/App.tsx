@@ -1,11 +1,9 @@
-import { ModeToggle } from "./components/mode-toggle";
-
+import BettingInterface from "./components/BettingInterface";
 function App() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen ">
-      <ModeToggle />
-      <h1>Hello World</h1>
-    </div>
+    <main className="flex min-h-screen flex-col items-center justify-center bg-[#1a2533] ">
+      <BettingInterface />
+    </main>
   );
 }
 
